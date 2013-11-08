@@ -9,3 +9,12 @@ app.config(['$translateProvider', function($translate) {
   $translate.useLocalStorage();
   $translate.preferredLanguage('en');
 }]);
+
+// Enable routing
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+    .when('/main', { 
+      templateUrl: 'view/main.htm',
+      controller: 'MainCtrl' })
+    .otherwise({redirectTo: '/main'});
+}]);
