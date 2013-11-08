@@ -1,4 +1,9 @@
 {
 "title" : "atte",
-"header" : "angular-translate translations editor"
+"main" : {
+  "header" : "atte",
+  "subheader" : "angular-translate translations editor",
+  "create" : "Create",
+  "modify" : "Modify"
+}
 }

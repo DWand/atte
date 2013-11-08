@@ -14,7 +14,6 @@ app.config(['$translateProvider', function($translate) {
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/main', { 
-      templateUrl: 'view/main.htm',
-      controller: 'MainCtrl' })
+      templateUrl: 'view/main.htm' })
     .otherwise({redirectTo: '/main'});
 }]);
