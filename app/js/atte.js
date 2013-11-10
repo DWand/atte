@@ -1,4 +1,4 @@
-var app = angular.module('atte', ['ng', 'ngCookies', 'pascalprecht.translate']);
+var app = angular.module('atte', ['ng', 'ngCookies', 'pascalprecht.translate', 'atte.utils', 'DWand.nw-fileDialog']);
 
 // Enable translations
 app.config(['$translateProvider', function($translate) {
@@ -20,36 +20,20 @@ app.config(['$routeProvider', function($routeProvider) {
     .otherwise({redirectTo: '/main'});
 }]);
 
-app.factory('fileDialogs', ['$q', function($q) {
-  var dialogs = {};
-  
-  var d = document.createElement('input');
-  d.type = 'file';
-  d.nwsaveas = '';
-  
-  dialogs.saveAs = function(callback) {
-    d.addEventListener('change', function() {
-      d.removeEventListener('change', arguments.callee, false);
-      var value = d.value;
-      d.value = '';
-      callback(value);
-    }, false);
-    d.click();
-  };
-  
-  dialogs.open = function() {
-    return confirm("Open");
-  };
-  
-  return dialogs;  
-}]);
-
-app.controller('mainCtrl', ['$scope', 'fileDialogs', function($scope, fileDialogs){
+app.controller('mainCtrl', ['$scope', 'fileDialog', function($scope, fileDialog){
   
   $scope.create = function() {
+  
+    fileDialog.saveAs(function(filename){
+      alert("Save as: " + filename);
+    });
     
-    fileDialogs.saveAs(function(filename){
-      alert(filename);
+  };
+  
+  $scope.open = function() {
+  
+    fileDialog.openFile(function(filename){
+      alert("Open : " + filename);
     });
     
   };
