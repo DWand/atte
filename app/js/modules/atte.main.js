@@ -1,0 +1,1 @@
+angular.module('atte.main', ['ng', 'DWand.nw-fileDialog']);
